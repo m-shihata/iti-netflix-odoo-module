@@ -1,0 +1,86 @@
+{
+	"info": {
+		"_postman_id": "0001e066-8f74-4b62-9502-1ffa260e4848",
+		"name": "iti_netflix_module",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "movies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8069/iti_netflix/movies",
+					"host": [
+						"localhost"
+					],
+					"port": "8069",
+					"path": [
+						"iti_netflix",
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "moives",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8069/iti_netflix/movies",
+					"host": [
+						"localhost"
+					],
+					"port": "8069",
+					"path": [
+						"iti_netflix",
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "categories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8069/iti_netflix/categories",
+					"host": [
+						"localhost"
+					],
+					"port": "8069",
+					"path": [
+						"iti_netflix",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sync movies",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8069/iti_netflix/movies/sync",
+					"host": [
+						"localhost"
+					],
+					"port": "8069",
+					"path": [
+						"iti_netflix",
+						"movies",
+						"sync"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

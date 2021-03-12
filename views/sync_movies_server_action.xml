@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <record model="ir.actions.server" id="netflix_movies_sync_movies_server_action">
+        <field name="name">Sync movies Server Action</field>
+        <field name="model_id" ref="model_netflix_movies"/>
+        <field name="state">code</field>
+        <field name="code">movies = model._sync_movies()</field>
+    </record>
+
+    <menuitem name="Sync movies" id="iti_netflix.sync_movies"
+          parent="iti_netflix.movies_menu"
+          action="netflix_movies_sync_movies_server_action"/>
+</odoo>
+

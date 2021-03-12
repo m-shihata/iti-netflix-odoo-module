@@ -1,0 +1,117 @@
+<odoo>
+    <data>
+
+        <!--Custom Tree View -->
+        <record model="ir.ui.view" id="netflix_movies_list">
+            <field name="name">Movies List</field>
+            <field name="model">netflix.movies</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="production_year"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Custom Form View -->
+        <record model="ir.ui.view" id="netflix_movies_form">
+            <field name="name">Movies Form</field>
+            <field name="model">netflix.movies</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="production_year"/>
+                                <field name="producer_id"/>
+                                <field name="company"/>
+                                <field name="subscription_price"/>
+                            </group>
+                            <group>
+                                <field name="url"/>
+                                <field name="image"/>
+                                <field name="country_id"/>
+                                <field name="category_id"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Description">
+                                <field name="description"/>
+                            </page>
+                            <page string="Cast">
+                                <field name="cast_ids"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Custom Graph View -->
+        <record model="ir.ui.view" id="netflix_movies_graph_view">
+            <field name="name">Graph View</field>
+            <field name="model">netflix.movies</field>
+            <field name="arch" type="xml">
+                <graph string="Movies Graph" type="bar">
+                    <!-- type defines default view bar, line, pie -->
+                    <field name="subscription_price" type="measure"/>
+                    <field name="production_year" type="row"/>
+                </graph>
+            </field>
+        </record>
+
+        <!-- Custom Search View -->
+        <record model="ir.ui.view" id="netflix_custom_search_view">
+            <field name="name">Search View</field>
+            <field name="model">netflix.movies</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name" />
+                    <field name="description" />
+                    <field name="subscription_price" />
+                    <field name="cast_ids" />
+                    <field name="country_id" />
+                </search>
+            </field>
+        </record>
+
+        <!-- Actions -->
+        <record model="ir.actions.act_window" id="netflix_movies_action_window">
+            <field name="name">Movies</field>
+            <field name="res_model">netflix.movies</field>
+            <field name="view_mode">kanban,tree,form,graph,pivot</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="netflix_sale_order_action_window">
+            <field name="name">Sales</field>
+            <field name="res_model">netflix.sale.order</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="netflix_movies_cast_action_window">
+            <field name="name">Cast</field>
+            <field name="res_model">netflix.movies.cast</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Menu Items -->
+        <menuitem name="Netflix" id="iti_netflix.netflix_menu_root"/>
+
+        <menuitem name="Movies" id="iti_netflix.movies_menu"
+                  parent="iti_netflix.netflix_menu_root"/>
+
+        <menuitem name="Movies List" id="iti_netflix.movies_list"
+                  parent="iti_netflix.movies_menu"
+                  action="netflix_movies_action_window"/>
+
+        <!-- Orders will appear with the basic view with no need to create new view -->
+        <menuitem name="Orders" id="iti_netflix.sales_orders_list"
+                  parent="iti_netflix.movies_menu"
+                  action="netflix_sale_order_action_window"/>
+
+        <menuitem name="Cast" id="iti_netflix.cast_list"
+                  parent="iti_netflix.movies_menu"
+                  action="netflix_movies_cast_action_window"/>
+    </data>
+</odoo>

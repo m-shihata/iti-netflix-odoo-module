@@ -1,0 +1,72 @@
+<odoo>
+    <report
+            string="Movie Report"
+            id="action_custom_movie_report"
+            model="netflix.movies"
+            menu="True"
+            report_type="qweb-pdf"
+            name="iti_netflix.movie_custom_report"
+            print_report_name="{object._get_report_name()}"
+    />
+    <!-- we have access to the object we also can use attributes directly instead of the function -->
+    <!-- print_report_name="{object.name}+{object.production_year" -->
+    <template id="movie_custom_report_document">
+        <t t-call="web.external_layout">
+            <div class="page">
+                <!-- <style></style> -->
+                <h2 class="text-center" style="color: black">
+                    <span>Movie -
+                        <t t-esc="o.name"/>
+                    </span>
+                    <!-- Use <t t-esc="o.attr" and <t t-foreach="ob.attr_ids" /> for templating -->
+                </h2>
+
+            <!-- for multiple pages reports you can use <div class="page"> 
+                or break pages using this tag <p style="page-break-before:always; float:none;"  -->
+                <div class="pull-left">
+                    <span>Production Year: </span>
+                    <t t-esc="o.production_year" />
+                </div>
+                <div class="pull-right">
+                    <span>Subscription Price: </span>
+                    <t t-esc="o.subscription_price" />
+                </div>
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <td>Cast</td>
+                            <td>Age</td>
+                            <td>Address</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="o.cast_ids" t-as="cast">
+                            <tr>
+                                <td>
+                                    <t t-esc="cast.name"/>
+                                </td>
+                                <td>
+                                    <t t-esc="cast.age"/>
+                                </td>
+                                <td>
+                                    <t t-esc="cast.address"/>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+        </t>
+    </template>
+
+
+    <template id="iti_netflix.movie_custom_report">
+        <t t-call="web.html_container">
+            <!-- web.html_container add header and footer to the report -->
+            <t t-foreach="docs" t-as="o">
+                <!-- foreach because we can select multiple instances and print them in one report -->
+                <t t-call="iti_netflix.movie_custom_report_document"/>
+            </t>
+        </t>
+    </template>
+</odoo>

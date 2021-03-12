@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_iti_netflix_iti_netflix_movies,iti_netflix.iti_netflix_movies,model_netflix_movies,base.group_user,1,1,1,1
+access_iti_netflix_iti_netflix_movies_categories,iti_netflix.iti_netflix_movies_categories,model_netflix_movies_categories,base.group_user,1,1,1,1
+access_iti_netflix_iti_netflix_movies_cast,iti_netflix.iti_netflix_movies_cast,model_netflix_movies_cast,base.group_user,1,1,1,1
+access_iti_netflix_iti_netflix_sale_order,iti_netflix.iti_netflix_movies_sale_order,model_netflix_sale_order,base.group_user,1,1,1,1

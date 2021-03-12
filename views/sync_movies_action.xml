@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="netflix_movies_sync_automated_action" model="ir.cron">
+        <field name="name">Sync Movies scheduler</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+        <field name="model_id" ref="model_netflix_movies"/>
+        <field name="code">model._sync_movies()</field>
+        <field name="state">code</field>
+        <field name="nextcall" eval="datetime.now().strftime('%Y-%m-%d 07:00:00')" />
+    </record>
+</odoo>
